@@ -150,18 +150,18 @@
 
     protected override void OnInitialized()
     {
-        filteredApps = AppDataService.GetAllApps();
+        filteredApps = AppDataService.GetAppsByCategory(null);
     }
 
     private void SearchPackages()
     {
         if (string.IsNullOrWhiteSpace(searchQuery))
         {
-            filteredApps = AppDataService.GetAllApps();
+            filteredApps = AppDataService.GetAppsByCategory(null);
         }
         else
         {
-            filteredApps = AppDataService.GetAllApps()
+            filteredApps = AppDataService.GetAppsByCategory(null)
                 .Where(app => app.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
         }
     }

@@ -39,7 +39,7 @@
 .bi-box-arrow-down {
 
     margin-right: 0.75rem;
-    font-size: 20;
+    font-size: 20px;
 
 
 }
@@ -51,7 +51,9 @@
 .bi-search {
     margin-right: 0.75rem;
 }
-
+.bi-tags {
+    margin-right: 0.75rem;
+}
 .nav-item {
     font-size: 0.9rem;
     padding-bottom: 0.5rem;

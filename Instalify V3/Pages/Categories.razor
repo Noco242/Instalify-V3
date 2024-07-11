@@ -1,44 +1,207 @@
 ﻿@page "/categories"
 
-<PageTitle>Kategorienverwaltung</PageTitle>
+<PageTitle>Kategorien</PageTitle>
 
-<h1>Kategorienverwaltung</h1>
+@inject Instalify_V3.CategoryDataService CategoryDataService
+@inject Instalify_V3.AppDataService AppDataService
+
+<h1>Kategorien</h1>
 
 <div class="categories-container">
-    <button @onclick="AddNewCategory">Neue Kategorie hinzufügen</button>
-    <div class="category-list">
-        @foreach (var category in categories)
-        {
-            <div class="category-item">
+    @foreach (var category in categories)
+    {
+        <div class="category" @onclick="() => ShowCategoryApps(category)">
+            <div class="category-header" style="background-color: @category.Color;">
+                <i class="bi @category.IconClass"></i>
                 <h3>@category.Name</h3>
-                <button @onclick="() => EditCategory(category.Id)">Bearbeiten</button>
-                <button @onclick="() => DeleteCategory(category.Id)">Löschen</button>
+            </div>
+            <div class="category-content">
+                <p>@category.Description</p>
+            </div>
+        </div>
+    }
+</div>
+
+@if (selectedCategory != null)
+{
+    <div class="apps-container">
+        <h2>Apps in @selectedCategory.Name</h2>
+        @foreach (var app in selectedCategoryApps)
+        {
+            <div class="app">
+                <div class="app-icon" style="background-color: @app.Color;">
+                    <i class="bi @app.IconClass"></i>
+                </div>
+                <div class="app-details">
+                    <h3>@app.Name</h3>
+                    <p>@app.Description</p>
+                    <div class="button-container">
+                        <button class="copy-button" @onclick="() => DownloadApp(app.Command)">Befehl kopieren</button>
+                    </div>
+                </div>
             </div>
         }
     </div>
-</div>
 
-@code {
-    private List<Category> categories = new List<Category>();
+    @code {
+    private List<Category> categories;
+    private Category selectedCategory;
+    private List<App> selectedCategoryApps;
 
-    private void AddNewCategory()
+    protected override void OnInitialized()
     {
-        // Logik zum Hinzufügen einer neuen Kategorie
+        categories = CategoryDataService.GetAllCategories();
     }
 
-    private void EditCategory(int id)
+    private void ShowCategoryApps(Category category)
     {
-        // Logik zum Bearbeiten einer Kategorie
+        selectedCategory = category;
+        selectedCategoryApps = AppDataService.GetAppsByCategory(category.Name);
     }
 
-    private void DeleteCategory(int id)
+    private async Task DownloadApp(string command)
     {
-        // Logik zum Löschen einer Kategorie
+        await JSRuntime.InvokeVoidAsync("eval", CopyToClipboardFunction);
+        await JSRuntime.InvokeVoidAsync("copyToClipboard", command);
     }
 
-    public class Category
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+    private string CopyToClipboardFunction => @"
+        function copyToClipboard(text) {
+            var dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('Text kopiert: ' + text);
     }
+";
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
 }
+
+}
+
+<style>
+    h1 {
+        font-family: 'Playwrite CL', sans-serif;
+        color: #AFDDE5;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .categories-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    .category {
+        background-color: #1E1E24;
+        color: #FFFFFF;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+        .category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+    .category-header {
+        background-color: #333333;
+        padding: 15px;
+        text-align: center;
+    }
+
+        .category-header i {
+            font-size: 24px;
+            color: #FFBD00;
+        }
+
+    .category-content {
+        padding: 20px;
+    }
+
+        .category-content h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .category-content p {
+            color: #CCCCCC;
+            font-size: 14px;
+        }
+
+    .apps-container {
+        margin-top: 40px;
+        padding: 20px;
+    }
+
+    .app {
+        background-color: #1E1E24;
+        color: #FFFFFF;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-top: 20px;
+    }
+
+        .app:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+    .app-icon {
+        background-color: #333333;
+        padding: 15px;
+        text-align: center;
+    }
+
+        .app-icon i {
+            font-size: 24px;
+            color: #FFBD00;
+        }
+
+    .app-details {
+        padding: 20px;
+    }
+
+        .app-details h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .app-details p {
+            color: #CCCCCC;
+            font-size: 14px;
+        }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+
+    .copy-button {
+        background-color: #FFBD00;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .copy-button:hover {
+            background-color: #FFD54F;
+        }
+</style>
