@@ -10,21 +10,135 @@
 
 </head>
 
-<h1>Willkommen bei Instalify!</h1>
+<div class="container">
+    <div class="header">
+        <h1>Willkommen bei Instalify!</h1>
+        <p>Verwalte und entdecke Apps für alle deine Bedürfnisse.</p>
+    </div>
 
-Welcome to your new app.s
+    <div class="features">
+        <div class="feature">
+            <i class="bi bi-archive"></i>
+            <h2>Kategorien entdecken</h2>
+            <p>Finde Apps in verschiedenen Kategorien wie Produktivität, Gaming, Entwicklung und mehr.</p>
+        </div>
+        <div class="feature">
+            <i class="bi bi-code-slash"></i>
+            <h2>Entwicklerwerkzeuge</h2>
+            <p>Entdecke Werkzeuge und Plattformen für Softwareentwicklung und Programmierung.</p>
+        </div>
+        <div class="feature">
+            <i class="bi bi-discord"></i>
+            <h2>Gaming</h2>
+            <p>Entdecke Plattformen und Tools für Gamer und Enthusiasten.</p>
+        </div>
+    </div>
 
+    <div class="cta">
+        <h2>Los geht's mit Instalify!</h2>
+        <p>Entdecke neue Apps und verbessere deine Produktivität. <a href="/categories">Jetzt starten</a></p>
+    </div>
+
+    <div class="footer">
+        <p>Hast du Fragen oder Feedback? Kontaktiere uns unter support@instalify.com</p>
+    </div>
+</div>
 
 <style>
-    body{
-        background-color: #003135
-
-    }
-    h1{
-        font-family: "Playwrite CL";
-        color: #AFDDE5
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 30px;
+        color: #FFFFFF;
     }
 
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
 
+        .header h1 {
+            font-family: 'Playwrite CL', sans-serif;
+            color: #AFDDE5;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
 
+        .header p {
+            font-size: 18px;
+            color: #CCCCCC;
+        }
+
+    .features {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+    }
+
+    .feature {
+        flex-basis: calc(33.33% - 20px);
+        text-align: center;
+        background-color: #1E1E24;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature i {
+            font-size: 48px;
+            color: #FFBD00;
+            margin-bottom: 10px;
+        }
+
+        .feature h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 16px;
+            color: #CCCCCC;
+            line-height: 1.6;
+        }
+
+    .cta {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+        .cta h2 {
+            font-family: 'Playwrite CL', sans-serif;
+            color: #AFDDE5;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            font-size: 16px;
+            color: #CCCCCC;
+        }
+
+        .cta a {
+            color: #FFBD00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+            .cta a:hover {
+                color: #FFD54F;
+            }
+
+    .footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 14px;
+        color: #CCCCCC;
+    }
 </style>
