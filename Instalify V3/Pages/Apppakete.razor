@@ -1,0 +1,438 @@
+﻿@page "/apppakete"
+
+<PageTitle>AppPakete</PageTitle>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+CL:wght@100..400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<h1>App-Pakete</h1>
+
+<div class="particles-js"></div>
+<div class="packages-container">
+
+    <!-- Paket 1: Gaming -->
+    <div class="package" id="gamingpack">
+        <div class="package-header gaming">
+            <i class="bi bi-controller"></i>
+            <h3>Gaming Paket</h3>
+        </div>
+        <div class="package-content">
+            <p>Das ultimative Paket für Gaming-Enthusiasten:</p>
+            <ul>
+                <li>Steam</li>
+                <li>Discord</li>
+                <li>Epic Games Launcher</li>
+                <li>Origin</li>
+                <li>Ubisoft Connect</li>
+                <li>Battle.net</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadGamingPack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket 2: Development -->
+    <div class="package" id="developmentpack">
+        <div class="package-header development">
+            <i class="bi bi-code-slash"></i>
+            <h3>Entwicklungs Paket</h3>
+        </div>
+        <div class="package-content">
+            <p>Ein Set von Tools für Entwickler:</p>
+            <ul>
+                <li>Visual Studio Code</li>
+                <li>JetBrains Rider</li>
+                <li>Git</li>
+                <li>Node.js</li>
+                <li>Python</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadDevelopmentPack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket 3: Design -->
+    <div class="package" id="designpack">
+        <div class="package-header design">
+            <i class="bi bi-brush"></i>
+            <h3>Design Paket</h3>
+        </div>
+        <div class="package-content">
+            <p>Tools und Anwendungen für kreative Designer:</p>
+            <ul>
+                <li>Adobe Creative Cloud</li>
+                <li>Affinity Designer</li>
+                <li>InVision Studio</li>
+                <li>Figma</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadDesignPack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket 4: Office -->
+    <div class="package" id="officepack">
+        <div class="package-header office">
+            <i class="bi bi-building"></i>
+            <h3>Office Paket</h3>
+        </div>
+        <div class="package-content">
+            <p>Software für Büroanwendungen und Produktivität:</p>
+            <ul>
+                <li>Microsoft Office</li>
+                <li>LibreOffice</li>
+                <li>WPS Office</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadOfficePack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket 5: Multimedia -->
+    <div class="package" id="multimediapack">
+        <div class="package-header multimedia">
+            <i class="bi bi-play-circle"></i>
+            <h3>Multimedia Paket</h3>
+        </div>
+        <div class="package-content">
+            <p>Programme für Multimedia- und Unterhaltungsanwendungen:</p>
+            <ul>
+                <li>VLC</li>
+                <li>Adobe Audition</li>
+                <li>DaVinci Resolve</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadMultimediaPack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket 6: Security -->
+    <div class="package" id="securitypack">
+        <div class="package-header security">
+            <i class="bi bi-shield-lock"></i>
+            <h3>Sicherheitspaket</h3>
+        </div>
+        <div class="package-content">
+            <p>Tools für die Sicherheit und den Schutz von Daten:</p>
+            <ul>
+                <li>Malwarebytes</li>
+                <li>Avast</li>
+                <li>NordVPN</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadSecurityPack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket 7: Utilities -->
+    <div class="package" id="utilitiespack">
+        <div class="package-header utilities">
+            <i class="bi bi-tools"></i>
+            <h3>Utilities Paket</h3>
+        </div>
+        <div class="package-content">
+            <p>Nützliche Werkzeuge für verschiedene Aufgaben:</p>
+            <ul>
+                <li>7zip</li>
+                <li>CCleaner</li>
+                <li>WinRAR</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadUtilitiesPack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket 8: Education -->
+    <div class="package" id="educationpack">
+        <div class="package-header education">
+            <i class="bi bi-book"></i>
+            <h3>Bildungs Paket</h3>
+        </div>
+        <div class="package-content">
+            <p>Software für Bildung und Lernen:</p>
+            <ul>
+                <li>Moodle</li>
+                <li>Edmodo</li>
+                <li>Khan Academy</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadEducationPack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket 9: Communication -->
+    <div class="package" id="communicationpack">
+        <div class="package-header communication">
+            <i class="bi bi-chat-dots"></i>
+            <h3>Kommunikations Paket</h3>
+        </div>
+        <div class="package-content">
+            <p>Programme für Kommunikation und Zusammenarbeit:</p>
+            <ul>
+                <li>Slack</li>
+                <li>Microsoft Teams</li>
+                <li>Zoom</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadCommunicationPack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paket 10: Social Media -->
+    <div class="package" id="socialmediapack">
+        <div class="package-header socialmedia">
+            <i class="bi bi-people"></i>
+            <h3>Social Media Paket</h3>
+        </div>
+        <div class="package-content">
+            <p>Apps für soziale Netzwerke und Social Media Management:</p>
+            <ul>
+                <li>Facebook</li>
+                <li>Instagram</li>
+                <li>Twitter</li>
+            </ul>
+            <div class="button-container">
+                <button class="copy-button" @onclick="DownloadSocialMediaPack">Befehl kopieren</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    h1 {
+        font-family: 'Playwrite CL', sans-serif;
+        color: #AFDDE5;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: #1E1E24;
+    }
+
+    .packages-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    .package {
+        background-color: #1E1E24;
+        color: #FFFFFF;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .package:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+    .package-header {
+        background-color: #333333;
+        padding: 15px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+        .package-header i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+    .package:hover .package-header {
+        transform: scale(1.05);
+    }
+
+    .package-content {
+        padding: 20px;
+    }
+
+        .package-content p {
+            color: #CCCCCC;
+            font-size: 16px;
+        }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .copy-button {
+        background-color: #FFBD00;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .copy-button:hover {
+            background-color: #FFD54F;
+        }
+
+    /* Farben für Paket-Header */
+    .gaming {
+        background-color: #2E86AB;
+    }
+
+    .development {
+        background-color: #F6AE2D;
+    }
+
+    .design {
+        background-color: #2EC4B6;
+    }
+
+    .office {
+        background-color: #6A0572;
+    }
+
+    .multimedia {
+        background-color: #4E3629;
+    }
+
+    .security {
+        background-color: #F26419;
+    }
+
+    .utilities {
+        background-color: #A7226E;
+    }
+
+    .education {
+        background-color: #E9D985;
+    }
+
+    .communication {
+        background-color: #001D4A;
+    }
+
+    .socialmedia {
+        background-color: #AD343E;
+    }
+</style>
+
+@code {
+
+    // JavaScript-Funktion für das Kopieren in die Zwischenablage
+    private string CopyToClipboardFunction => @"
+        function copyToClipboard(text) {
+            var dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            alert('Text kopiert: ' + text);
+        }
+    ";
+
+    // Paketdefinitionen
+    private string gamingPack = "winget install Steam \n Discord \n EpicGames.EpicGamesLauncher \n ElectronicArts.Origin \n Ubisoft.UbisoftConnect \n Blizzard.BattleNet";
+    private string developmentPack = "winget install VisualStudioCode \n JetBrains.Rider \n Git \n NodeJS \n Python";
+    private string designPack = "winget install Adobe.CreativeCloud \n Affinity.Designer \n InVision.Studio \n Figma";
+    private string officePack = "winget install Microsoft.Office \n LibreOffice \n WPS.Office";
+    private string multimediaPack = "winget install VLC \n Adobe.Audition \n DaVinciResolve";
+    private string securityPack = "winget install Malwarebytes \n Avast \n NordVPN";
+    private string utilitiesPack = "winget install 7zip \n CCleaner \n WinRAR";
+    private string educationPack = "winget install Moodle \n Edmodo \n KhanAcademy";
+    private string communicationPack = "winget install Slack \n Microsoft.Teams \n Zoom";
+    private string socialMediaPack = "winget install Facebook \n Instagram \n Twitter";
+
+    // Injection von IJSRuntime für die Interaktion mit JavaScript
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    // C#-Methode, die die JavaScript-Funktion aufruft und den Text zum Kopieren übergibt
+    private async Task DownloadPackage(string package)
+    {
+        await JSRuntime.InvokeVoidAsync("eval", CopyToClipboardFunction);
+        await JSRuntime.InvokeVoidAsync("copyToClipboard", package);
+    }
+
+    // Methoden für das Herunterladen der einzelnen Pakete
+    private void DownloadGamingPack()
+    {
+        DownloadPackage(gamingPack);
+    }
+
+    private void DownloadDevelopmentPack()
+    {
+        DownloadPackage(developmentPack);
+    }
+
+    private void DownloadDesignPack()
+    {
+        DownloadPackage(designPack);
+    }
+
+    private void DownloadOfficePack()
+    {
+        DownloadPackage(officePack);
+    }
+
+    private void DownloadMultimediaPack()
+    {
+        DownloadPackage(multimediaPack);
+    }
+
+    private void DownloadSecurityPack()
+    {
+        DownloadPackage(securityPack);
+    }
+
+    private void DownloadUtilitiesPack()
+    {
+        DownloadPackage(utilitiesPack);
+    }
+
+    private void DownloadEducationPack()
+    {
+        DownloadPackage(educationPack);
+    }
+
+    private void DownloadCommunicationPack()
+    {
+        DownloadPackage(communicationPack);
+    }
+
+    private void DownloadSocialMediaPack()
+    {
+        DownloadPackage(socialMediaPack);
+    }
+}

@@ -1,0 +1,44 @@
+﻿@page "/categories"
+
+<PageTitle>Kategorienverwaltung</PageTitle>
+
+<h1>Kategorienverwaltung</h1>
+
+<div class="categories-container">
+    <button @onclick="AddNewCategory">Neue Kategorie hinzufügen</button>
+    <div class="category-list">
+        @foreach (var category in categories)
+        {
+            <div class="category-item">
+                <h3>@category.Name</h3>
+                <button @onclick="() => EditCategory(category.Id)">Bearbeiten</button>
+                <button @onclick="() => DeleteCategory(category.Id)">Löschen</button>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<Category> categories = new List<Category>();
+
+    private void AddNewCategory()
+    {
+        // Logik zum Hinzufügen einer neuen Kategorie
+    }
+
+    private void EditCategory(int id)
+    {
+        // Logik zum Bearbeiten einer Kategorie
+    }
+
+    private void DeleteCategory(int id)
+    {
+        // Logik zum Löschen einer Kategorie
+    }
+
+    public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+}

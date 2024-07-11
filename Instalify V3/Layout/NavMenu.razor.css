@@ -39,8 +39,17 @@
 .bi-box-arrow-down {
 
     margin-right: 0.75rem;
+    font-size: 20;
 
 
+}
+
+.bi-boxes{
+    margin-right: 0.75rem;
+}
+
+.bi-search {
+    margin-right: 0.75rem;
 }
 
 .nav-item {

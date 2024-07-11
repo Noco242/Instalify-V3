@@ -1,0 +1,46 @@
+﻿@page "/custompackages"
+
+<PageTitle>Benutzerdefinierte Pakete</PageTitle>
+
+<h1>Benutzerdefinierte Pakete</h1>
+
+<div class="custom-packages-container">
+    <button @onclick="AddNewPackage">Neues Paket hinzufügen</button>
+    <div class="package-list">
+        @foreach (var package in customPackages)
+        {
+            <div class="package-item">
+                <h3>@package.Name</h3>
+                <p>@package.Description</p>
+                <button @onclick="() => EditPackage(package.Id)">Bearbeiten</button>
+                <button @onclick="() => DeletePackage(package.Id)">Löschen</button>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<CustomPackage> customPackages = new List<CustomPackage>();
+
+    private void AddNewPackage()
+    {
+        // Logik zum Hinzufügen eines neuen Pakets
+    }
+
+    private void EditPackage(int id)
+    {
+        // Logik zum Bearbeiten eines Pakets
+    }
+
+    private void DeletePackage(int id)
+    {
+        // Logik zum Löschen eines Pakets
+    }
+
+    public class CustomPackage
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
+}
